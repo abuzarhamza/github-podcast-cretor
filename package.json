@@ -1,11 +1,16 @@
 {
   "name": "podcast-github-generator",
   "version": "1.0.0",
+  "type": "module",
   "description": "automation to generate podcast ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "command-exists": "^1.2.9",
+    "inquirer": "^9.2.13"
+  }
 }

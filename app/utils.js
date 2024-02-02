@@ -1,7 +1,4 @@
-
-
 const chalk  = require('chalk');
-
 const commandExistsSync = require('command-exists').sync;
 const getos = require('getos');
 

@@ -1,7 +1,6 @@
 {
   "name": "podcast-github-generator",
   "version": "1.0.0",
-  "type": "module",
   "description": "automation to generate podcast ",
   "main": "index.js",
   "scripts": {
@@ -10,10 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.3.0",
+    "chalk": "^4.1.2",
     "command-exists": "^1.2.9",
     "getos": "^3.2.1",
-    "inquirer": "^9.2.13",
-    "tree-model": "^1.0.7"
+    "inquirer": "^8.0.0"
   }
 }

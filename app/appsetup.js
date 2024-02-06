@@ -1,3 +1,26 @@
+const {logger } = require('utils');
+const fs = require("fs");
+
+const makeAppDirectory = (appName) => {
+	const dirName = appName;
+	if (fs.existsSync(dirName)) {
+		logger.error(`dir ${dirName} alsready exists!`);
+		return;
+	}
+	try {
+		fs.mkdirSync(folderName);
+	} catch(err) {
+		logger.error(`dir ${dirName} error while creating directory!`);
+	}
+
+};
+
+const createStaticYmlConfig = () => {
+
+};
+
+
+
 const runNewSetupJob = (setupConfig) => {
 	//     {
 	//   blog_name: 'g',
@@ -14,6 +37,8 @@ const runNewSetupJob = (setupConfig) => {
 	// _data/data.yml
 	// _source
 	// xml
+
+	
 };
 
 module.exports = {

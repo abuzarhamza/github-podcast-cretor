@@ -2,21 +2,24 @@ const chalk = require("chalk");
 const commandExistsSync = require("command-exists").sync;
 const getos = require("getos");
 
+
 const logger = {
-	warning: (str) => {
+
+	warning:   (str) => {
 		console.log(chalk.yellow(`warning : ${str}`));
 	},
-	error: (err) => {
+	error:  (err) => {
 		console.log(chalk.red(`error : ${err}`));
 	},
 	info: (info) => {
 		console.log(chalk.blue(`info : ${info}`));
 	},
-	log: (log) => {
+	log:  (log) => {
 		console.log(chalk.green(`log : ${log}`));
 	},
 };
 const envInfo = () => {
+
 	getos((e, os) => {
 		if (e) {
 			logger.error(e);
@@ -34,4 +37,5 @@ const checkRequiredCommand = () => {
 module.exports = {
 	envInfo,
 	checkRequiredCommand,
+	logger
 };

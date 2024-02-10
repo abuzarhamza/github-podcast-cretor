@@ -1,4 +1,4 @@
-const {logger } = require('utils');
+const { logger } = require("utils");
 const fs = require("fs");
 
 const makeAppDirectory = (appName) => {
@@ -8,18 +8,14 @@ const makeAppDirectory = (appName) => {
 		return;
 	}
 	try {
-		fs.mkdirSync(folderName);
-	} catch(err) {
+		fs.mkdirSync(dirName);
+	} catch (err) {
 		logger.error(`dir ${dirName} error while creating directory!`);
 	}
-
 };
 
-const createStaticYmlConfig = () => {
-
-};
-
-
+const makeWebPage = () => {};
+const createStaticYmlConfig = () => {};
 
 const runNewSetupJob = (setupConfig) => {
 	//     {
@@ -29,16 +25,16 @@ const runNewSetupJob = (setupConfig) => {
 	//   email: 'null@null.null',
 	//   feed_dir: 'tb_gbbbg'
 	// }
-	// make dir app
+	// make dir app || done
+	makeAppDirectory();
 	// create a web page
-	// create feed dir
+	makeWebPage();
+	// create feed dir ||
 	// app_config.yml create yml file
 	// create feed_dir
 	// _data/data.yml
 	// _source
 	// xml
-
-	
 };
 
 module.exports = {

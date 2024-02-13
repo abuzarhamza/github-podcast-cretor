@@ -51,13 +51,50 @@ const createWebPage = (data) => {
 		Object.keys(data.feed_list)
 			.sort()
 			.forEach((keyName, index) => {
-				const feedIndex = index + 1;
+				
 				let feedData = data.feed_list[keyName];
-				selected.append(`${feedIndex}. <a id="f${feedIndex}" href="${feedData.description}">${feedData.name}</a>
+				if (feedData && feedData.description && feedData.name) {
+					const feedIndex = index + 1;
+					selected.append(`${feedIndex}. <a id="f${feedIndex}" href="${feedData.description}">${feedData.name}</a>
                     <br/>
                     <br/>
 
                 `);
+					if (feedData.youtube_music) {
+						selected.append(
+							`<a href="${feedData.youtube_music}">Listen on Youtube Music</a>
+								<br/>
+								<br/>
+							`
+						);
+					}
+					if (feedData.itunes) {
+						selected.append(
+							`<a href="${feedData.itunes}">Listen on itunes</a>
+								<br/>
+								<br/>
+							`
+						);
+					}
+					if (feedData.itunes) {
+						selected.append(
+							`<a href="${feedData.itunes}">Listen on itunes</a>
+								<br/>
+								<br/>
+							`
+						);
+					}
+					if (feedData.spotify) {
+						selected.append(
+							`<a href="${feedData.spotify}">Listen on spotify</a>
+								<br/>
+								<br/>
+							`
+						);
+					}
+					
+				} 
+
 			});
 	}
 	// 1. <a href="https://en.wikipedia.org/wiki/Khurram_Murad">Khurram Murrad</a>
@@ -90,6 +127,8 @@ createWebPage({
 		},
 	],
 });
+
+
 module.exports = {
 	envInfo,
 	checkRequiredCommand,

@@ -36,14 +36,14 @@ const createWebPage = (data) => {
 	const $ = cheerio.load('<!DOCTYPE html><html lang="en"><>');
 
 	//title
-	$("head").append(`<title>${data.title}</title>`);
+	$("head").append(`<title>${data?.title}</title>`);
 
 	//about
 	$("body").append(`<h1 style="font-family:monospace;">About</h1>`);
 	$("body").append(
-		`<p style="font-family:monospace;">${data.discription}</p>`
+		`<p style="font-family:monospace;">${data?.discription}</p>`
 	);
-	$("body").append(`<h2 style="font-family:monospace;">${data.name}</h1>`);
+	$("body").append(`<h2 style="font-family:monospace;">${data?.name}</h1>`);
 	$("body").append(`<p class="p1" id="p1"></p>`);
 
 	const selected = $(".p1");
@@ -51,7 +51,6 @@ const createWebPage = (data) => {
 		Object.keys(data.feed_list)
 			.sort()
 			.forEach((keyName, index) => {
-				
 				let feedData = data.feed_list[keyName];
 				if (feedData && feedData.description && feedData.name) {
 					const feedIndex = index + 1;
@@ -92,10 +91,24 @@ const createWebPage = (data) => {
 							`
 						);
 					}
-					
-				} 
-
+				}
 			});
+
+		if (
+			data.sections &&
+			Array.isArray(data.sections) &&
+			data.sections.length > 0
+		) {
+			data.sections.sort((a, b) => {
+				return a?.id - b?.id;
+			});
+			data.sections.forEach((section) => {
+				if (section?.type && section.type === "list") {
+					if (section?.data && Array.isArray(section.data)) {
+					}
+				}
+			});
+		}
 	}
 	// 1. <a href="https://en.wikipedia.org/wiki/Khurram_Murad">Khurram Murrad</a>
 	//          <br/>
@@ -113,6 +126,7 @@ const createWebPage = (data) => {
 };
 
 createWebPage({
+	website_name: "podislam",
 	title: "foo",
 	discription: "heppy",
 	name: "india",
@@ -126,9 +140,25 @@ createWebPage({
 			"Subscribe on Android": "asdasdasd",
 		},
 	],
+	sections: [
+		{
+			id: 1,
+			section_name: "Disclaimer",
+			type: "list",
+			data: [
+				"podislam and its developers is not responsible for any content linked to or referred to from this website.",
+				"podislam and its developers does not accept responsibility for content hosted on third party websites.",
+				"podislam and its developers is not responsible for any content uploaded to YouTube, Soundcloud, Video or any other online video hosting/streaming service embedded on our site.",
+				"podislam feeds can be used for development of third party apps that has advertisement or monetary gain thereof without our permission.",
+				"podislam and its developer does not necessarily agree with or condone the ideologies, messages, theological opinions and views of the speakers.",
+				"Content on this site may be downloaded and can be forked . You may not use these files for commercial purposes as many of these files have rules and regulations that prevent their sale except by the publishing companies.",
+				"podislam and its developers is not affiliated with any particular movement, sect, group, etc. We absolutely condemn in the strongest terms terrorism and any extremism done in the name of Islam and we refuse to associate ourselves with those who practice and condone such behavior and thoughts.",
+			],
+		},
+	],
 });
 
-
+createWebPage();
 module.exports = {
 	envInfo,
 	checkRequiredCommand,
